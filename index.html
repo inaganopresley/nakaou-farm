@@ -19,6 +19,8 @@
     --leaf-dim:  #7C8A63;
     --ink:       #2B2116;
     --line:      rgba(43,33,22,0.16);
+    --skin:      #E4BA8B;   /* 肌色 */
+    --hair:      #CFC7B2;   /* 白髪まじりの髪色 */
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -304,25 +306,15 @@
   /* ---------- Profile ---------- */
   .profile-inner{
     display:grid;
-    grid-template-columns:220px 1fr;
+    grid-template-columns:300px 1fr;
     gap:52px;
-    align-items:start;
-  }
-  .profile-mark{
-    width:220px;
-    height:220px;
-    border-radius:50%;
-    background:var(--soil-deep);
-    display:flex;
     align-items:center;
-    justify-content:center;
   }
-  .profile-mark span{
-    font-family:'Shippori Mincho B1', serif;
-    color:var(--paper-hi);
-    font-size:2.4rem;
-    letter-spacing:.15em;
-    writing-mode:vertical-rl;
+  .profile-illustration{
+    width:100%;
+    height:auto;
+    display:block;
+    border:1px solid var(--line);
   }
   .profile-name{
     font-size:1.9rem;
@@ -339,8 +331,7 @@
   .profile-inner p{ max-width:56ch; }
   @media (max-width:720px){
     .profile-inner{ grid-template-columns:1fr; }
-    .profile-mark{ width:140px; height:140px; }
-    .profile-mark span{ font-size:1.6rem; }
+    .profile-illustration{ max-width:280px; margin:0 auto; }
   }
 
   /* ---------- Region ---------- */
@@ -685,7 +676,105 @@
       <h2>経営者紹介</h2>
     </div>
     <div class="profile-inner">
-      <div class="profile-mark"><span>陽一</span></div>
+      <svg class="profile-illustration" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="400" height="230" fill="var(--paper)"/>
+        <path d="M0 210 L60 165 L110 200 L170 150 L230 205 L290 170 L340 205 L400 190 L400 230 L0 230 Z" fill="var(--leaf-dim)" opacity="0.22"/>
+        <g fill="var(--paper-hi)" opacity="0.85">
+          <ellipse cx="70" cy="52" rx="30" ry="10"/>
+          <ellipse cx="96" cy="48" rx="22" ry="9"/>
+          <ellipse cx="320" cy="38" rx="27" ry="9"/>
+          <ellipse cx="347" cy="45" rx="18" ry="7"/>
+        </g>
+
+        <rect x="0" y="225" width="400" height="115" fill="var(--soil)"/>
+        <path d="M0 245 Q200 234 400 245" stroke="var(--soil-deep)" stroke-width="2" fill="none" opacity="0.35"/>
+        <path d="M0 266 Q200 253 400 266" stroke="var(--soil-deep)" stroke-width="2" fill="none" opacity="0.32"/>
+        <path d="M0 287 Q200 273 400 287" stroke="var(--soil-deep)" stroke-width="2" fill="none" opacity="0.28"/>
+        <path d="M0 305 Q200 293 400 305" stroke="var(--soil-deep)" stroke-width="1.5" fill="none" opacity="0.22"/>
+
+        <path d="M40 300 C38 288 45 282 53 280" stroke="var(--leaf)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M355 296 C357 284 350 278 342 276" stroke="var(--leaf)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M195 314 C193 302 200 296 208 294" stroke="var(--leaf)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M205 314 C207 300 216 294 224 293" stroke="var(--leaf)" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+        <ellipse cx="118" cy="311" rx="42" ry="7" fill="var(--soil-deep)" opacity="0.18"/>
+        <ellipse cx="282" cy="311" rx="44" ry="7" fill="var(--soil-deep)" opacity="0.18"/>
+
+        <!-- 妻：ながいもを持つ -->
+        <g>
+          <path d="M96 232 C92 260 90 285 94 308 L110 308 C112 285 112 258 112 232 Z" fill="var(--soil-deep)"/>
+          <path d="M118 232 C120 260 122 285 126 308 L142 308 C140 285 136 258 132 232 Z" fill="var(--soil-deep)"/>
+
+          <path d="M84 150 C82 175 82 205 88 232 L142 232 C146 205 146 175 142 150 C132 138 96 138 84 150 Z" fill="var(--soil)"/>
+          <path d="M88 232 C86 205 86 178 92 154 L104 154 C100 178 100 205 102 232 Z" fill="var(--paper-hi)" opacity="0.07"/>
+
+          <path d="M92 178 C92 165 134 165 134 178 L138 228 C138 236 88 236 88 228 Z" fill="var(--yam)" opacity="0.92"/>
+          <path d="M92 180 L84 176 M134 180 L142 176" stroke="var(--soil-deep)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+          <path d="M86 156 C72 168 64 182 66 198" stroke="var(--soil)" stroke-width="15" fill="none" stroke-linecap="round"/>
+          <path d="M140 156 C150 172 152 190 146 206" stroke="var(--soil)" stroke-width="15" fill="none" stroke-linecap="round"/>
+
+          <path d="M70 155 C82 190 92 230 96 270 C97 282 104 286 110 280 C114 274 108 230 100 195 C96 178 90 163 82 152 Z" fill="var(--yam)" stroke="var(--soil-deep)" stroke-width="1.5"/>
+          <path d="M84 190 L74 196 M90 220 L80 226 M96 250 L86 256" stroke="var(--soil)" stroke-width="1" opacity="0.4"/>
+
+          <circle cx="66" cy="200" r="9" fill="var(--skin)"/>
+          <circle cx="146" cy="208" r="9" fill="var(--skin)"/>
+
+          <rect x="104" y="128" width="20" height="18" rx="6" fill="var(--skin)"/>
+          <circle cx="114" cy="108" r="27" fill="var(--skin)"/>
+          <ellipse cx="88" cy="110" rx="5" ry="8" fill="var(--skin)"/>
+          <ellipse cx="140" cy="110" rx="5" ry="8" fill="var(--skin)"/>
+
+          <path d="M88 100 C86 84 100 76 114 76 C128 76 142 84 140 100 C140 92 128 88 114 88 C100 88 88 92 88 100 Z" fill="var(--hair)"/>
+          <path d="M84 94 C88 74 140 74 144 94 C132 84 96 84 84 94 Z" fill="var(--leaf)"/>
+          <path d="M144 94 C152 100 154 112 148 120" stroke="var(--leaf)" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <circle cx="148" cy="120" r="5" fill="var(--leaf-dim)"/>
+
+          <path d="M100 104 C104 101 110 101 113 103 M118 103 C121 101 127 101 130 104" stroke="var(--soil-deep)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M102 111 C105 114 110 114 113 111 M117 111 C120 114 125 114 128 111" stroke="var(--soil-deep)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M114 113 C113 118 112 121 115 122" stroke="var(--soil-deep)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <path d="M104 126 C109 131 121 131 126 126" stroke="var(--soil-deep)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <ellipse cx="99" cy="120" rx="6" ry="4" fill="var(--burdock)" opacity="0.12"/>
+          <ellipse cx="129" cy="120" rx="6" ry="4" fill="var(--burdock)" opacity="0.12"/>
+          <path d="M96 108 C94 110 94 113 96 115 M132 108 C134 110 134 113 132 115" stroke="var(--soil-deep)" stroke-width="1" opacity="0.35" fill="none"/>
+        </g>
+
+        <!-- 夫：ごぼうを持つ -->
+        <g>
+          <path d="M266 232 C262 260 260 285 264 308 L280 308 C282 285 282 258 282 232 Z" fill="var(--soil-deep)"/>
+          <path d="M288 232 C290 260 292 285 296 308 L312 308 C310 285 306 258 302 232 Z" fill="var(--soil-deep)"/>
+
+          <path d="M254 150 C252 176 252 206 258 232 L312 232 C316 206 316 176 312 150 C302 138 266 138 254 150 Z" fill="var(--burdock)"/>
+          <path d="M276 150 C280 158 292 158 296 150 L292 142 L280 142 Z" fill="var(--paper-hi)"/>
+          <path d="M258 232 C256 205 256 178 262 154 L274 154 C270 178 270 205 272 232 Z" fill="var(--paper-hi)" opacity="0.06"/>
+
+          <path d="M256 156 C242 170 234 186 236 202" stroke="var(--burdock)" stroke-width="15" fill="none" stroke-linecap="round"/>
+          <path d="M310 156 C320 172 322 190 316 206" stroke="var(--burdock)" stroke-width="15" fill="none" stroke-linecap="round"/>
+
+          <path d="M240 155 C250 190 258 230 262 270 C263 280 268 284 272 279 C275 274 271 232 265 197 C262 180 256 165 250 152 Z" fill="var(--burdock)" opacity="0.92" stroke="var(--soil-deep)" stroke-width="1.3"/>
+          <path d="M254 190 L246 196 M258 222 L250 228 M262 252 L254 258" stroke="var(--soil-deep)" stroke-width="1" opacity="0.35"/>
+
+          <circle cx="236" cy="204" r="9" fill="var(--skin)"/>
+          <circle cx="316" cy="208" r="9" fill="var(--skin)"/>
+
+          <rect x="276" y="128" width="20" height="18" rx="6" fill="var(--skin)"/>
+          <circle cx="286" cy="108" r="28" fill="var(--skin)"/>
+          <ellipse cx="259" cy="110" rx="5" ry="8" fill="var(--skin)"/>
+          <ellipse cx="313" cy="110" rx="5" ry="8" fill="var(--skin)"/>
+
+          <path d="M258 104 C256 96 260 90 266 88 L306 88 C312 90 316 96 314 104 C308 98 264 98 258 104 Z" fill="var(--hair)"/>
+          <ellipse cx="286" cy="80" rx="42" ry="10" fill="var(--yam)" stroke="var(--soil-deep)" stroke-width="1.5"/>
+          <path d="M260 78 C264 58 308 58 312 78 C300 68 272 68 260 78 Z" fill="var(--yam)" stroke="var(--soil-deep)" stroke-width="1.5"/>
+          <path d="M262 79 C268 84 304 84 310 79" stroke="var(--burdock)" stroke-width="3" fill="none" opacity="0.5"/>
+
+          <path d="M272 104 C276 101 282 101 285 103 M290 103 C293 101 299 101 303 104" stroke="var(--hair)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M274 112 C277 115 282 115 285 112 M289 112 C292 115 297 115 300 112" stroke="var(--soil-deep)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M286 114 C285 119 284 122 287 123" stroke="var(--soil-deep)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <path d="M274 126 C274 123 298 123 298 126" stroke="var(--hair)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <path d="M276 129 C281 134 291 134 296 129" stroke="var(--soil-deep)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M267 108 C265 110 265 113 267 115 M305 108 C307 110 307 113 305 115" stroke="var(--soil-deep)" stroke-width="1" opacity="0.35" fill="none"/>
+        </g>
+      </svg>
       <div>
         <h3 class="profile-name">山田 陽一</h3>
         <span class="profile-role">代表　／　中央農園</span>
@@ -704,13 +793,15 @@
       <p>中央農園があるのは、青森県南部地方。ながいもやごぼうの産地として知られるこの土地で、四十年にわたって畑を守り続けてきました。これからも、この場所で二人が続けられる形の農業を大切にしていきます。</p>
     </div>
     <div>
-      <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0" y="0" width="300" height="260" fill="none"/>
-        <circle cx="150" cy="130" r="118" fill="none" stroke="var(--yam)" stroke-width="1" opacity="0.5"/>
-        <circle cx="150" cy="130" r="80" fill="none" stroke="var(--yam)" stroke-width="1" opacity="0.35"/>
-        <circle cx="150" cy="130" r="5" fill="var(--yam)"/>
-        <text x="150" y="118" text-anchor="middle" fill="var(--paper-hi)" font-family="Zen Old Mincho, serif" font-size="14" letter-spacing="2">青森県</text>
-        <text x="150" y="150" text-anchor="middle" fill="#DCD2BC" font-family="Zen Old Mincho, serif" font-size="12" letter-spacing="2">南部地方</text>
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <text x="150" y="18" text-anchor="middle" fill="var(--paper-hi)" font-family="Zen Old Mincho, serif" font-size="14" letter-spacing="3">青森県</text>
+        <g transform="translate(150,165) scale(0.72) translate(-164,-126)">
+          <path d="M100 28 C88 46 80 68 82 92 C84 106 96 112 108 106 C122 100 136 90 154 84 C168 80 182 66 200 48 C213 34 226 18 240 16 C251 25 249 44 238 58 C226 75 217 91 208 100 C194 112 180 116 166 112 C153 108 140 111 133 122 C142 141 163 154 182 173 C201 192 214 210 210 228 C178 236 140 236 116 232 C102 206 93 178 88 154 C82 140 75 126 77 110 C79 93 86 74 82 57 C79 41 87 33 100 28 Z"
+                fill="var(--yam)" stroke="var(--soil-deep)" stroke-width="2.6"/>
+          <circle cx="180" cy="195" r="8" fill="var(--soil-deep)"/>
+          <line x1="180" y1="195" x2="228" y2="205" stroke="var(--paper-hi)" stroke-width="1.4" opacity="0.6"/>
+        </g>
+        <text x="200" y="226" fill="var(--paper-hi)" font-family="Zen Old Mincho, serif" font-size="13" letter-spacing="2">南部地方</text>
       </svg>
     </div>
   </div>
