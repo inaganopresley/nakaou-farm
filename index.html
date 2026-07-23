@@ -361,6 +361,129 @@
     .region-inner{ grid-template-columns:1fr; }
   }
 
+  /* ---------- Omikuji ---------- */
+  .omikuji{
+    background:var(--soil-deep);
+    color:var(--paper-hi);
+    text-align:center;
+  }
+  .omikuji .eyebrow{ color:var(--yam); }
+  .omikuji h2{ color:var(--paper-hi); }
+  .omikuji-inner{
+    max-width:560px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .omikuji-lead{
+    margin-top:18px;
+    color:#DCD2BC;
+    max-width:42ch;
+  }
+
+  .omikuji-box-wrap{
+    position:relative;
+    width:150px;
+    aspect-ratio:200 / 220;
+    margin-top:40px;
+  }
+  .omikuji-box{
+    width:100%;
+    height:100%;
+    display:block;
+    transform-origin:50% 100%;
+  }
+  .omikuji-box-wrap.shaking .omikuji-box{
+    animation: box-shake .55s ease-in-out 2;
+  }
+  @keyframes box-shake{
+    0%,100%{ transform:rotate(0deg); }
+    20%{ transform:rotate(-5deg); }
+    40%{ transform:rotate(5deg); }
+    60%{ transform:rotate(-4deg); }
+    80%{ transform:rotate(4deg); }
+  }
+
+  .omikuji-stick{
+    position:absolute;
+    left:50%;
+    top:18%;
+    width:13px;
+    height:44%;
+    background:var(--yam);
+    border:1px solid var(--soil-deep);
+    border-radius:2px 2px 0 0;
+    display:flex;
+    justify-content:center;
+    padding-top:8px;
+    opacity:0;
+    z-index:2;
+    transform:translate(-50%, 6px);
+  }
+  .omikuji-stick .stick-rank{
+    writing-mode:vertical-rl;
+    font-family:'Shippori Mincho B1', serif;
+    font-weight:800;
+    font-size:.72rem;
+    color:var(--soil-deep);
+    letter-spacing:.06em;
+  }
+  .omikuji-stick.drawn{
+    animation: stick-rise .6s ease forwards;
+  }
+  @keyframes stick-rise{
+    from{ transform:translate(-50%, 6px); opacity:0; }
+    to{ transform:translate(-50%, -58px); opacity:1; }
+  }
+  .omikuji-btn{
+    margin-top:38px;
+    padding:16px 40px;
+    background:var(--yam);
+    color:var(--soil-deep);
+    border:none;
+    font-family:'Zen Old Mincho', serif;
+    font-size:.95rem;
+    letter-spacing:.14em;
+    cursor:pointer;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .omikuji-btn:hover{ background:#E9DBA6; transform:translateY(-2px); }
+  .omikuji-btn:active{ transform:translateY(0); }
+  .omikuji-btn:focus-visible{ outline:2px solid var(--yam); outline-offset:4px; }
+
+  .omikuji-result{
+    margin-top:36px;
+    padding:34px 30px;
+    border:1px solid rgba(241,233,214,0.25);
+    width:100%;
+    opacity:0;
+    transform:translateY(14px) scale(.98);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .omikuji-result.show{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+  .omikuji-rank{
+    font-family:'Shippori Mincho B1', serif;
+    font-size:2rem;
+    color:var(--yam);
+    display:block;
+    letter-spacing:.1em;
+  }
+  .omikuji-msg{
+    margin-top:16px;
+    color:#DCD2BC;
+    font-size:.98rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .omikuji-result{ transition:none; }
+    .omikuji-box-wrap.shaking .omikuji-box{ animation:none; }
+    .omikuji-stick.drawn{ animation:none; opacity:1; transform:translate(-50%, -58px); }
+  }
+
   /* ---------- Footer ---------- */
   footer{
     padding:60px 0 44px;
@@ -418,6 +541,7 @@
       <li><a href="#method">農法</a></li>
       <li><a href="#profile">経営者</a></li>
       <li><a href="#region">地域</a></li>
+      <li><a href="#omikuji">みくじ</a></li>
     </ul>
   </div>
 </header>
@@ -592,6 +716,33 @@
   </div>
 </section>
 
+<!-- ============ OMIKUJI ============ -->
+<section id="omikuji" class="omikuji reveal">
+  <div class="wrap omikuji-inner">
+    <p class="eyebrow">TODAY'S FORTUNE</p>
+    <h2>中央農園　今日のおみくじ</h2>
+    <p class="omikuji-lead">今日の畑仕事の運試し。箱を振ると、ながいもとごぼうにまつわる一日の運勢が出ます。</p>
+
+    <div class="omikuji-box-wrap" id="omikuji-box-wrap">
+      <div class="omikuji-stick" id="omikuji-stick">
+        <span class="stick-rank" id="omikuji-stick-rank"></span>
+      </div>
+      <svg class="omikuji-box" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="28,42 172,42 192,112 172,212 28,212 8,112" fill="var(--burdock)" stroke="var(--soil-deep)" stroke-width="3"/>
+        <polygon points="28,42 172,42 160,64 40,64" fill="#5C4726"/>
+        <ellipse cx="100" cy="48" rx="15" ry="9" fill="var(--soil-deep)"/>
+        <text x="100" y="160" text-anchor="middle" fill="var(--yam)" font-family="Zen Old Mincho, serif" font-size="18" letter-spacing="6" writing-mode="vertical-rl">御神籤</text>
+      </svg>
+    </div>
+
+    <button id="omikuji-btn" class="omikuji-btn" type="button">箱を振っておみくじを引く</button>
+    <div id="omikuji-result" class="omikuji-result">
+      <span class="omikuji-rank"></span>
+      <p class="omikuji-msg"></p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
@@ -620,6 +771,53 @@
     els.forEach(el=>io.observe(el));
   } else {
     els.forEach(el=>el.classList.add('in'));
+  }
+
+  const fortunes = [
+    { rank:"大吉", msg:"掘り上げたながいもが、まっすぐ長く伸びていました。今日はどんなことも思い通りに進みそうです。" },
+    { rank:"吉",   msg:"ごぼうの香りが畑いっぱいに広がる日。落ち着いて動けば、うまくいきます。" },
+    { rank:"吉",   msg:"土がやわらかく、鍬がすっと入ります。ゆったり構えて過ごしましょう。" },
+    { rank:"中吉", msg:"小さな芽が顔を出しました。焦らず、じっくり取り組むと実を結びます。" },
+    { rank:"中吉", msg:"畑を渡る風がやさしい一日。無理せず、いつも通りのペースで大丈夫。" },
+    { rank:"小吉", msg:"曲がったごぼうも、味は変わりません。多少の遠回りも悪くない日です。" },
+    { rank:"末吉", msg:"今日は種をまく日。すぐに結果を求めず、先を楽しみにしましょう。" },
+    { rank:"凶",   msg:"土が硬く、掘るのに一苦労。無理をせず、休むのも仕事のうちです。" }
+  ];
+
+  const omikujiBtn = document.getElementById('omikuji-btn');
+  const omikujiResult = document.getElementById('omikuji-result');
+  const omikujiBoxWrap = document.getElementById('omikuji-box-wrap');
+  const omikujiStick = document.getElementById('omikuji-stick');
+  const omikujiStickRank = document.getElementById('omikuji-stick-rank');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(omikujiBtn){
+    omikujiBtn.addEventListener('click', ()=>{
+      omikujiBtn.disabled = true;
+      omikujiResult.classList.remove('show');
+      omikujiStick.classList.remove('drawn');
+      void omikujiStick.offsetWidth; /* restart animation */
+
+      const pick = fortunes[Math.floor(Math.random() * fortunes.length)];
+      const shakeTime = reduceMotion ? 0 : 1100;
+      const riseTime  = reduceMotion ? 0 : 600;
+
+      omikujiBoxWrap.classList.add('shaking');
+
+      setTimeout(()=>{
+        omikujiBoxWrap.classList.remove('shaking');
+        omikujiStickRank.textContent = pick.rank;
+        omikujiStick.classList.add('drawn');
+
+        setTimeout(()=>{
+          omikujiResult.querySelector('.omikuji-rank').textContent = pick.rank;
+          omikujiResult.querySelector('.omikuji-msg').textContent = pick.msg;
+          omikujiResult.classList.add('show');
+          omikujiBtn.textContent = "もう一度振る";
+          omikujiBtn.disabled = false;
+        }, riseTime);
+      }, shakeTime);
+    });
   }
 </script>
 
